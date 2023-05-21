@@ -31,7 +31,7 @@ const JobDetails = () => {
                 />
             case 'About':
                 return <JobAbout 
-                    info={data[0].job_description ?? "No data provided"}
+                    // info={data[0].job_description ?? "No data provided"}
                 />
             case 'Responsibilities': 
                 return <Specifics
@@ -62,34 +62,34 @@ const JobDetails = () => {
 
 
         <>
-        <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
-        {isLoading ? (
-          <ActivityIndicator size="large" color={COLORS.primary} />
-        ) : error ? (
-          <Text>Something went wrong</Text>
-        ) : data === undefined || data.length === 0 ? (
-          <Text>No data</Text>
-        ) : (
-          <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
-            <Company
-              companyLogo={data[0]?.employer_logo}
-              jobTitle={data[0]?.job_title}
-              companyName={data[0]?.employer_name}
-              location={data[0]?.job_country}
-            />
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+                {isLoading ? (
+                <ActivityIndicator size="large" color={COLORS.primary} />
+                ) : error ? (
+                <Text>Something went wrong</Text>
+                ) : data === undefined || data.length === 0 ? (
+                <Text>No data</Text>
+                ) : (
+                <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
+                    <Company
+                    companyLogo={data[0]?.employer_logo}
+                    jobTitle={data[0]?.job_title}
+                    companyName={data[0]?.employer_name}
+                    location={data[0]?.job_country}
+                    />
+                    <JobTabs 
+                        tabs={tabs}
+                        activeTab={activeTab}
+                        setActiveTab={setActiveTab}
+                    />
 
-            <JobTabs 
-                tabs={tabs}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-            />
+                    {displayTabContent()}
 
+                </View>
+                )}
+            </ScrollView>
 
-            {displayTabContent()}
-
-          </View>
-        )}
-      </ScrollView>
+            <JobFooter url={data[0]?.job_google_link ?? 'https://career.google.com/jobs/results'}/>
         </>
     </SafeAreaView>
   )
