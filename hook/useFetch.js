@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 // import { RAPID_API_KEY } from '@env';
 
-const rapidApiKey = '3d4f838e8amsh7220b90a65168d6p126d1bjsn2ab65d01d6aa';
+const rapidApiKey = 'f6c8d80a37mshc2b84b4c0441157p15c1bdjsn91cf16609600';
 
 
 const useFetch = (endpoint, query) => {
