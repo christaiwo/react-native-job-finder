@@ -33,7 +33,7 @@ const JobDetails = () => {
                 />
             case 'About':
                 return <JobAbout 
-                    // info={data[0].job_description ?? "No data provided"}
+                    info={data[0].job_description ?? "No data provided"}
                 />
             case 'Responsibilities': 
                 return <Specifics
